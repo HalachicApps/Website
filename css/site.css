@@ -2,7 +2,7 @@
    and the install steps live on their own download page. */
 :root {
   --bg: #f7f7f5; --surface: #eceae5; --surface-2: #ffffff; --ink: #1b1e22; --muted: #5c6168; --line: #dcd9d2;
-  --accent: #b60e0a;        /* the Alarm Clock's brand red: alarm marker only */
+  --accent: #e3a83e;        /* Shemesh sun gold: alarm marker in the day arc (a fill; dark text on it) */
   --primary: #26394d; --primary-ink: #ffffff; --primary-soft: #dfe6ed;
   --sky: #eeece6; --sun: #c27c0e; --sun-soft: #f4dfb6;
   --font-display: "Familjen Grotesk", "Segoe UI", system-ui, sans-serif;
@@ -15,14 +15,14 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #121416; --surface: #1b1e21; --surface-2: #1f2326; --ink: #ebe9e4; --muted: #a3a8ae; --line: #2d3135;
-    --accent: #ff8a7d; --primary: #b4cbe0; --primary-ink: #11202e; --primary-soft: #22313f;
+    --accent: #e3a83e; --primary: #b4cbe0; --primary-ink: #11202e; --primary-soft: #22313f;
     --sky: #1b1e21; --sun: #e3a83e; --sun-soft: #4a3a1c;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #121416; --surface: #1b1e21; --surface-2: #1f2326; --ink: #ebe9e4; --muted: #a3a8ae; --line: #2d3135;
-  --accent: #ff8a7d; --primary: #b4cbe0; --primary-ink: #11202e; --primary-soft: #22313f;
+  --accent: #e3a83e; --primary: #b4cbe0; --primary-ink: #11202e; --primary-soft: #22313f;
   --sky: #1b1e21; --sun: #e3a83e; --sun-soft: #4a3a1c;
   color-scheme: dark;
 }
@@ -106,17 +106,23 @@ section { padding-block: clamp(3rem, 7vw, 5rem); }
 .app-card .lede { font-size: 1.05rem; }
 .app-card ul { margin: 0; padding-left: 1.1rem; color: var(--muted); display: grid; gap: 0.2rem; }
 
-/* Day arc */
-.dayarc { margin: 1rem 0 0; background: var(--sky); border-radius: var(--radius); padding: 1.25rem 1.25rem 0.75rem; }
-.dayarc-head { display: flex; justify-content: space-between; gap: 0.25rem 1rem; flex-wrap: wrap; font-size: 0.92rem; color: var(--muted); }
-.dayarc-head strong { color: var(--ink); font-weight: 600; }
-.dayarc-head .heb { font-family: var(--font-hebrew); font-size: 1.05rem; color: var(--ink); unicode-bidi: isolate; }
-.arc-svg { width: 100%; height: auto; display: block; }
-.arc-svg text { font-family: var(--font-mono); font-size: 12px; fill: var(--muted); }
-.arc-svg .t-name { font-family: var(--font-body); font-size: 13px; font-weight: 600; fill: var(--ink); }
-.arc-svg .t-alarm { fill: var(--accent); font-family: var(--font-body); font-weight: 600; font-size: 13px; }
+/* Day arc: a night-navy sky in both themes, like the app icon. */
+.dayarc {
+  --arc-bg: #22344a; --arc-ink: #ece8e1; --arc-muted: #b7c0ca; --arc-line: rgba(236, 232, 225, 0.18);
+  margin: 1rem 0 0; color: var(--arc-ink); border-radius: calc(var(--radius) + 4px); padding: 1.4rem 1.5rem 1rem;
+  background: radial-gradient(120% 150% at 50% 125%, #31475f 0%, #22344a 45%, #172437 100%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 18px 40px -18px rgba(16, 26, 40, 0.55);
+}
+.dayarc-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.25rem 1rem; flex-wrap: wrap; font-size: 0.92rem; color: var(--arc-muted); }
+.dayarc-head strong { color: var(--arc-ink); font: 600 1.05rem/1.3 var(--font-display); }
+.dayarc-head .heb { font-family: var(--font-hebrew); font-size: 1.05rem; color: var(--arc-ink); unicode-bidi: isolate; }
+.arc-svg { width: 100%; height: auto; display: block; margin-top: 0.25rem; }
+.arc-svg text { font-family: var(--font-mono); font-size: 12px; fill: var(--arc-muted); }
+.arc-svg .t-name { font-family: var(--font-body); font-size: 13.5px; font-weight: 600; fill: var(--arc-ink); }
+.arc-svg .t-time { font-variant-numeric: tabular-nums; }
+.arc-svg .t-alarm { fill: #172437; font-family: var(--font-body); font-size: 13px; }
 .arc-list { display: none; }
-.arc-caption { font-size: 0.85rem; color: var(--muted); padding-top: 0.25rem; }
+.arc-caption { font-size: 0.85rem; color: var(--arc-muted); padding-top: 0.5rem; border-top: 1px solid var(--arc-line); margin-top: 0.25rem; }
 
 /* Screenshots */
 .shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 2.5vw, 2rem); margin-block: 0 1rem; }
@@ -228,8 +234,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
     display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 1.25rem;
     list-style: none; margin: 0.5rem 0; padding: 0;
   }
-  .arc-list li { display: flex; justify-content: space-between; gap: 0.5rem; padding: 0.5rem 0; border-top: 1px solid var(--line); font-weight: 600; }
-  .arc-list .t { font: 400 0.95rem/1.6 var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+  .arc-list li { display: flex; justify-content: space-between; gap: 0.5rem; padding: 0.5rem 0; border-top: 1px solid var(--arc-line); font-weight: 600; }
+  .arc-list .t { font: 400 0.95rem/1.6 var(--font-mono); color: var(--arc-muted); font-variant-numeric: tabular-nums; }
   .arc-list .alarm { grid-column: 1 / -1; color: var(--accent); }
   .arc-list .alarm .t { color: var(--accent); }
 

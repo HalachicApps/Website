@@ -5,19 +5,20 @@ The Halachic Applications website, served by GitHub Pages from this repository.
 | Page | File |
 | --- | --- |
 | Home (`/`) | `index.html` |
-| Alarm Clock (`/alarm-clock/`) | `alarm-clock/index.html` |
-| Alarm Clock download and install steps (`/alarm-clock/download/`) | `alarm-clock/download/index.html` |
+| Shemesh, the zmanim alarm clock (`/shemesh/`) | `shemesh/index.html` |
+| Shemesh download and install steps (`/shemesh/download/`) | `shemesh/download/index.html` |
+| Old Alarm Clock links (`/alarm-clock/`, `/alarm-clock/download/`) | redirect pages in `alarm-clock/` |
 | Shabbos List (`/shabbos-list/`) | `shabbos-list/index.html` |
 
-- Shared styles are in `css/site.css`, the menu and copy buttons in `js/site.js`, and the Alarm Clock's zmanim arc in `js/dayarc.js`.
-- Screenshots and logos are in `img/`, the Alarm Clock APK in `downloads/`.
+- Shared styles are in `css/site.css`, the menu and copy buttons in `js/site.js`, and Shemesh's zmanim arc in `js/dayarc.js`.
+- Screenshots and logos are in `img/`, the Shemesh APK in `downloads/`.
 - The header and footer are repeated in each page. If you change one, change them all.
 - `CNAME` tells GitHub Pages to serve the site at halachicapplications.com. Don't delete it.
 
-## Release a new Alarm Clock version
+## Release a new Shemesh version
 
 1. Copy the new APK into `downloads/` as `halachic-alarm-clock-<version>.apk` and delete the old one.
-2. Search all the pages for the old version number and update it: the download link and box in `alarm-clock/download/index.html`, and the version chips in `index.html`, `alarm-clock/index.html` and the download page.
+2. Search all the pages for the old version number and update it: the download link and box in `shemesh/download/index.html`, and the version chips in `index.html`, `shemesh/index.html` and the download page.
 3. Commit and push. The live site updates in about a minute.
 
 ## Preview locally
