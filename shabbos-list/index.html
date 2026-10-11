@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shabbos List · Halachic Applications</title>
+<meta name="description" content="Shabbos List is a shared to-do list for getting the house ready for Shabbos. Make it once; it starts fresh every week. In development for Android.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Frank+Ruhl+Libre:wght@500&display=swap">
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Halachic Applications home">
+      <img class="brand-mark" src="../img/logos/halachic-applications.svg" alt="" width="30" height="30">
+      Halachic Applications
+    </a>
+    <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu">
+      <svg class="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+      <svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"/><path d="M18 6 6 18"/></svg>
+    </button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="../alarm-clock/">Alarm Clock</a>
+      <a href="./" aria-current="page">Shabbos List</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cta" href="../alarm-clock/download/">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div class="app-id big">
+      <img class="app-icon" src="../img/logos/shabbos-list.svg" alt="" width="72" height="72">
+      <div>
+        <span class="eyebrow">Shabbos List</span>
+        <div class="chips"><span class="chip">In development</span><span class="chip">Android</span></div>
+      </div>
+    </div>
+    <h1>Ready for Shabbos, together.</h1>
+    <p class="lede">A shared to-do list for getting the house ready for Shabbos. Make the list once. Each week it starts fresh, and everyone in the family can see what is left and who is doing it.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="mailto:admin@halachicapplications.com?subject=Shabbos%20List%20early%20access">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        Ask for early access
+      </a>
+    </div>
+  </div>
+
+  <section style="padding-top:2rem">
+    <div class="wrap split">
+      <div style="display:grid;gap:.75rem;min-width:0">
+        <span class="eyebrow">Planned features</span>
+        <h2>The list that runs itself</h2>
+        <p class="lede">Friday afternoon shouldn’t depend on someone remembering. The list knows which week it is and who is doing what.</p>
+      </div>
+      <ul class="checklist" aria-label="Planned features">
+        <li><span class="box" aria-hidden="true"></span><div><strong>Resets after Shabbos</strong><span class="d">The list clears itself on Motzei Shabbos, ready for next week.</span></div></li>
+        <li><span class="box" aria-hidden="true"></span><div><strong>Assign tasks</strong><span class="d">Give each job to a family member so nothing is done twice or forgotten.</span></div></li>
+        <li><span class="box" aria-hidden="true"></span><div><strong>Group tasks</strong><span class="d">Kitchen, table, lights, timers: keep related jobs together.</span></div></li>
+        <li><span class="box" aria-hidden="true"></span><div><strong>Only when needed</strong><span class="d">Tasks that show up only for some weeks, like guests or a Yom Tov that follows Shabbos.</span></div></li>
+        <li><span class="box" aria-hidden="true"></span><div><strong>Reusable templates</strong><span class="d">Start from a ready-made list and change it to fit your home.</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="cta-band">
+        <div>
+          <h2>Want to try it early?</h2>
+          <p>Email us and we’ll let you know when a test version is ready.</p>
+        </div>
+        <a class="btn" href="mailto:admin@halachicapplications.com?subject=Shabbos%20List%20early%20access">Ask for early access</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="contact">
+    <div class="wrap contact">
+      <div>
+        <span class="eyebrow">Contact</span>
+        <h2>Ideas for the list?</h2>
+        <p class="lede">Tell us what your family’s Erev Shabbos looks like. It helps us build the right thing.</p>
+      </div>
+      <div class="email-row">
+        <a class="email" href="mailto:admin@halachicapplications.com" id="email">admin@halachicapplications.com</a>
+        <button class="copy" type="button" data-copy="email">Copy</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Halachic Applications</span>
+    <span>Zmanim are calculated, not a psak. Ask your rav when in doubt.</span>
+  </div>
+</footer>
+
+<script src="../js/site.js"></script>
+</body>
+</html>

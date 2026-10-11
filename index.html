@@ -10,184 +10,32 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Frank+Ruhl+Libre:wght@500&display=swap">
-<style>
-/* Layout: one reading column (max 72rem) that opens on a day-arc of real zmanim, then app sections stacked; install steps as a real ordered sequence. */
-:root {
-  --bg: #f7f7f5; --surface: #eceae5; --surface-2: #ffffff; --ink: #1b1e22; --muted: #5c6168; --line: #dcd9d2;
-  --accent: #b60e0a;        /* the app's own brand red: icon and alarm marker only */
-  --accent-ink: #ffffff;
-  --primary: #26394d; --primary-ink: #ffffff; --primary-soft: #dfe6ed;
-  --sky: #eeece6; --sun: #c27c0e; --sun-soft: #f4dfb6;
-  --font-display: "Familjen Grotesk", "Segoe UI", system-ui, sans-serif;
-  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
-  --font-hebrew: "Frank Ruhl Libre", "David", "Times New Roman", serif;
-  --radius: 14px;
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #121416; --surface: #1b1e21; --surface-2: #23272b; --ink: #ebe9e4; --muted: #a3a8ae; --line: #2d3135;
-    --accent: #ff8a7d; --accent-ink: #2a0705; --primary: #b4cbe0; --primary-ink: #11202e; --primary-soft: #22313f;
-    --sky: #1b1e21; --sun: #e3a83e; --sun-soft: #4a3a1c;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #121416; --surface: #1b1e21; --surface-2: #23272b; --ink: #ebe9e4; --muted: #a3a8ae; --line: #2d3135;
-    --accent: #ff8a7d; --accent-ink: #2a0705; --primary: #b4cbe0; --primary-ink: #11202e; --primary-soft: #22313f;
-    --sky: #1b1e21; --sun: #e3a83e; --sun-soft: #4a3a1c;
-  color-scheme: dark;
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body {
-  margin: 0; background: var(--bg); color: var(--ink);
-  font: 400 1.0625rem/1.6 var(--font-body);
-  -webkit-font-smoothing: antialiased;
-}
-img { max-width: 100%; display: block; }
-a { color: var(--primary); }
-a:focus-visible, button:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; border-radius: 6px; }
-h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; text-wrap: balance; margin: 0; }
-h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 700; letter-spacing: -0.02em; }
-h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); font-weight: 700; letter-spacing: -0.015em; }
-h3 { font-size: 1.15rem; font-weight: 600; }
-p { margin: 0; }
-.wrap { max-width: 72rem; margin: 0 auto; padding-inline: max(16px, 4vw); }
-.eyebrow {
-  font: 500 0.78rem/1 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary);
-}
-.lede { color: var(--muted); font-size: 1.15rem; max-width: 38em; }
-
-/* Header */
-.site-header { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; }
-.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 0.85rem; flex-wrap: wrap; }
-.brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--ink); font: 700 1.1rem/1 var(--font-display); }
-.brand-mark { width: 30px; height: 30px; flex: none; border-radius: 7px; }
-.nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
-.nav a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
-.nav a:hover { color: var(--ink); }
-
-/* Hero */
-.hero { padding-block: clamp(2.5rem, 6vw, 4.5rem) 1rem; display: grid; gap: 1.5rem; }
-.hero .lede { font-size: 1.25rem; }
-.actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.5rem; }
-.btn {
-  display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.8rem 1.3rem; border-radius: 999px;
-  font: 600 1rem/1 var(--font-body); text-decoration: none; border: 1.5px solid var(--primary); cursor: pointer;
-}
-.btn-primary { background: var(--primary); color: var(--primary-ink); }
-.btn-primary:hover { filter: brightness(1.08); }
-.btn-ghost { background: transparent; color: var(--primary); }
-.btn-ghost:hover { background: var(--primary-soft); }
-.btn svg { width: 18px; height: 18px; flex: none; }
-
-/* Day arc */
-.dayarc { margin-top: 1.5rem; background: var(--sky); border-radius: var(--radius); padding: 1.25rem 1.25rem 0.75rem; }
-.dayarc-head { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: 0.92rem; color: var(--muted); }
-.dayarc-head strong { color: var(--ink); font-weight: 600; }
-.dayarc-head .heb { font-family: var(--font-hebrew); font-size: 1.05rem; color: var(--ink); unicode-bidi: isolate; }
-.arc-scroll { overflow-x: auto; }
-.arc-svg { width: 100%; min-width: 620px; height: auto; display: block; }
-.arc-svg text { font-family: var(--font-mono); font-size: 12px; fill: var(--muted); }
-.arc-svg .t-name { font-family: var(--font-body); font-size: 13px; font-weight: 600; fill: var(--ink); }
-.arc-svg .t-alarm { fill: var(--accent); font-family: var(--font-body); font-weight: 600; font-size: 13px; }
-.arc-caption { font-size: 0.85rem; color: var(--muted); padding-top: 0.25rem; }
-
-/* Sections */
-section { padding-block: clamp(3rem, 7vw, 5rem); }
-.section-head { display: grid; gap: 0.75rem; margin-bottom: 2rem; }
-.rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
-
-/* App header */
-.app-id { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-.app-icon { width: 56px; height: 56px; border-radius: 13px; flex: none; box-shadow: 0 0 0 1px var(--line); }
-.chips { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-.chip { font: 500 0.78rem/1 var(--font-mono); padding: 0.45rem 0.65rem; border-radius: 999px; background: var(--surface); color: var(--muted); }
-.chip.live { background: var(--primary-soft); color: var(--primary); }
-
-/* Screenshots */
-.shots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1rem, 2.5vw, 2rem); margin-block: 2.5rem 3rem; }
-@media (max-width: 900px) { .shots { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.shot { display: grid; gap: 0.6rem; margin: 0; }
-.shot img { width: 100%; max-width: 320px; height: auto; margin-inline: auto; border-radius: 26px; border: 7px solid #1b1e22; background: #1b1e22; box-shadow: 0 10px 30px rgba(20, 24, 28, 0.14); }
-.shot figcaption { font-size: 0.9rem; color: var(--muted); text-align: center; }
-
-/* Features */
-.features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem 2.25rem; }
-@media (max-width: 900px) { .features { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .features { grid-template-columns: 1fr; } }
-.feature { display: grid; gap: 0.5rem; align-content: start; min-width: 0; padding-top: 1rem; border-top: 2px solid var(--line); }
-.feature h3 { display: flex; align-items: center; gap: 0.5rem; }
-.feature h3 svg { width: 20px; height: 20px; color: var(--primary); flex: none; }
-.feature p { color: var(--muted); font-size: 1rem; }
-.feature ul { margin: 0; padding-left: 1.1rem; color: var(--muted); font-size: 1rem; display: grid; gap: 0.2rem; }
-
-/* Download */
-.download {
-  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 2rem; align-items: center;
-  background: var(--surface); border-radius: var(--radius); padding: clamp(1.5rem, 4vw, 2.5rem);
-}
-@media (max-width: 760px) { .download { grid-template-columns: 1fr; } }
-.download-meta { display: grid; grid-template-columns: auto 1fr; gap: 0.4rem 1.25rem; font-size: 0.98rem; margin: 0; }
-.download-meta dt { color: var(--muted); }
-.download-meta dd { margin: 0; font-family: var(--font-mono); font-size: 0.92rem; font-variant-numeric: tabular-nums; }
-.note { font-size: 0.92rem; color: var(--muted); border-left: 3px solid var(--primary); padding-left: 0.85rem; }
-
-/* Install steps */
-.steps { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; gap: 0; counter-reset: step; }
-.step { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 1rem; padding-block: 1.25rem; border-top: 1px solid var(--line); counter-increment: step; }
-.step::before {
-  content: counter(step); width: 2.4rem; height: 2.4rem; border-radius: 50%; display: grid; place-items: center;
-  background: var(--primary); color: var(--primary-ink); font: 600 1.05rem/1 var(--font-display);
-}
-.step h3 { margin-bottom: 0.3rem; }
-.step p, .step li { color: var(--muted); }
-.step ul { margin: 0.4rem 0 0; padding-left: 1.1rem; display: grid; gap: 0.25rem; }
-.step strong { color: var(--ink); font-weight: 600; }
-.ui { font-family: var(--font-mono); font-size: 0.88em; background: var(--surface); color: var(--ink); padding: 0.1em 0.4em; border-radius: 5px; white-space: nowrap; }
-
-.help { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
-@media (max-width: 860px) { .help { grid-template-columns: 1fr; } }
-.help div { display: grid; gap: 0.35rem; align-content: start; min-width: 0; }
-.help h3 { font-size: 1.02rem; }
-.help p { color: var(--muted); font-size: 0.98rem; }
-
-/* Shabbos List */
-.soon { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.5rem; align-items: start; }
-@media (max-width: 760px) { .soon { grid-template-columns: 1fr; } }
-.checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
-.checklist li { display: grid; grid-template-columns: 1.4rem minmax(0, 1fr); gap: 0.75rem; align-items: start; }
-.checklist .box { width: 1.2rem; height: 1.2rem; border: 2px solid var(--muted); border-radius: 4px; margin-top: 0.22rem; }
-.checklist strong { display: block; font-weight: 600; }
-.checklist span.d { color: var(--muted); font-size: 0.98rem; }
-
-/* Contact & footer */
-.contact { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-.email-row { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
-.email { font: 500 1.05rem/1 var(--font-mono); user-select: all; color: var(--ink); background: var(--surface); padding: 0.75rem 1rem; border-radius: 10px; }
-.copy { background: transparent; border: 1.5px solid var(--line); color: var(--ink); border-radius: 10px; padding: 0.65rem 0.9rem; font: 600 0.95rem/1 var(--font-body); cursor: pointer; }
-.copy:hover { border-color: var(--primary); }
-footer { border-top: 1px solid var(--line); padding-block: 1.75rem; color: var(--muted); font-size: 0.9rem; }
-footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-</style>
+<link rel="stylesheet" href="css/site.css">
+<script>
+  // Links to the old one-page site (/#install and so on) go to the new pages.
+  (function () {
+    var moved = { "#install": "alarm-clock/download/", "#alarm-clock": "alarm-clock/", "#shabbos-list": "shabbos-list/" };
+    if (moved[location.hash]) location.replace(moved[location.hash]);
+  })();
+</script>
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Halachic Applications home">
+    <a class="brand" href="./" aria-label="Halachic Applications home">
       <img class="brand-mark" src="img/logos/halachic-applications.svg" alt="" width="30" height="30">
       Halachic Applications
     </a>
-    <nav class="nav" aria-label="Main">
-      <a href="#alarm-clock">Alarm Clock</a>
-      <a href="#install">Download</a>
-      <a href="#shabbos-list">Shabbos List</a>
+    <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu">
+      <svg class="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+      <svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"/><path d="M18 6 6 18"/></svg>
+    </button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="alarm-clock/">Alarm Clock</a>
+      <a href="shabbos-list/">Shabbos List</a>
       <a href="#contact">Contact</a>
+      <a class="nav-cta" href="alarm-clock/download/">Download</a>
     </nav>
   </div>
 </header>
@@ -195,192 +43,76 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
 <main id="top">
   <div class="wrap hero">
     <span class="eyebrow">Android apps for the Jewish day</span>
-    <h1>Your phone, set to zmanim.</h1>
-    <p class="lede">Halachic Applications builds simple, careful tools for daily Jewish life. Our first app sets alarms by halachic times, so they move with the sun instead of the clock.</p>
-    <div class="actions">
-      <a class="btn btn-primary" href="#install">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
-        Get the Alarm Clock
-      </a>
-      <a class="btn btn-ghost" href="#alarm-clock">See what it does</a>
-    </div>
-
-    <figure class="dayarc" aria-labelledby="arc-cap">
-      <div class="dayarc-head">
-        <span><strong id="arc-date">Sunday, October 11, 2026</strong> · New York</span>
-        <span><span class="heb" lang="he" dir="rtl" id="arc-heb">ל׳ תשרי תשפ״ז</span> · <span id="arc-heb-en">30 Tishrei 5787 · Rosh Chodesh Cheshvan</span></span>
-      </div>
-      <div class="arc-scroll">
-        <svg class="arc-svg" id="arc" viewBox="0 0 800 250" role="img" aria-label="The day's zmanim in New York on October 11, 2026, from dawn at 5:50 AM to sunset at 6:21 PM, with an alarm 18 minutes before sunset at 6:03 PM."></svg>
-      </div>
-      <figcaption class="arc-caption" id="arc-cap">Today’s zmanim for New York, worked out the way the app does. An alarm set to “18 min before sunset” rings at <span id="arc-alarm">6:03</span> today and moves a little every day as sunset does.</figcaption>
-    </figure>
+    <h1>Simple, careful tools for daily Jewish life.</h1>
+    <p class="lede">Halachic Applications makes Android apps that work the way halacha does: by zmanim, the Hebrew calendar and your own minhag.</p>
   </div>
 
-  <section id="alarm-clock">
-    <div class="wrap">
-      <div class="section-head">
+  <section style="padding-top:1.5rem">
+    <div class="wrap apps">
+      <article class="app-card">
         <div class="app-id">
           <img class="app-icon" src="img/logos/alarm-clock.svg" alt="" width="56" height="56">
           <div>
-            <h2>Halachic Alarm Clock</h2>
-            <div class="chips" style="margin-top:.5rem">
-              <span class="chip live">Beta · version 1.1.1</span>
-              <span class="chip">Android 5.0 and up</span>
-              <span class="chip">English · עברית</span>
-            </div>
+            <h2><a href="alarm-clock/">Halachic Alarm Clock</a></h2>
+            <div class="chips"><span class="chip live">Beta · version 1.1.1</span><span class="chip">Android</span></div>
           </div>
         </div>
-        <p class="lede">Set an alarm for “15 minutes before candle lighting” or “at sunrise” once, and it rings at the right time every day, wherever you are. The app shows the day’s zmanim, the Hebrew date and what’s coming up, and stays quiet on Shabbos and Yom Tov unless you tell it otherwise.</p>
-      </div>
+        <p class="lede">Alarms set by zmanim, like “15 minutes before candle lighting” or “at sunrise”, that move with the sun every day.</p>
+        <ul>
+          <li>Any zman, before or after, on the days you pick</li>
+          <li>Quiet on Shabbos and Yom Tov unless you say otherwise</li>
+          <li>Hebrew calendar, Omer and holiday reminders</li>
+        </ul>
+        <div class="actions">
+          <a class="btn btn-primary" href="alarm-clock/download/">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+            Download the beta
+          </a>
+          <a class="btn btn-ghost" href="alarm-clock/">Learn more</a>
+        </div>
+      </article>
 
-      <div class="shots">
-        <figure class="shot"><img src="img/today.webp" alt="Today screen: Hebrew date, Rosh Chodesh, the next alarm and the next zman with a countdown" loading="lazy" width="540" height="1110"><figcaption>Today at a glance</figcaption></figure>
-        <figure class="shot"><img src="img/zmanim.webp" alt="Zmanim screen listing dawn, sunrise, Shema (MGA and GRA), Tefila, midday and Mincha times" loading="lazy" width="540" height="1110"><figcaption>The day’s zmanim</figcaption></figure>
-        <figure class="shot"><img src="img/alarms.webp" alt="Alarms screen with two Friday alarms set relative to sunset" loading="lazy" width="540" height="1110"><figcaption>Alarms tied to zmanim</figcaption></figure>
-        <figure class="shot"><img src="img/editor.webp" alt="Alarm editor: 18 minutes before sunset, every Friday, with a Ring on Shabbos and Yom Tov switch" loading="lazy" width="540" height="1110"><figcaption>Set it once</figcaption></figure>
-      </div>
-
-      <div class="features">
-        <div class="feature">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2"/></svg>Alarms by zman</h3>
-          <p>Pick any zman, then minutes or hours before or after it. Repeat on chosen days, add a label, choose the sound. The alarm recalculates every day.</p>
-        </div>
-        <div class="feature">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-1.5 2-1.5 3.5 0 5 1.5-1.5 1.5-3 0-5Z"/><rect x="9" y="9" width="6" height="12" rx="1"/></svg>Quiet on Shabbos and Yom Tov</h3>
-          <p>Alarms skip Shabbos and Yom Tov automatically, with one day in Israel and two outside. Turn ringing back on for any single alarm, or add erev Yom Tov to a Friday alarm.</p>
-        </div>
-        <div class="feature">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18h18"/><path d="M6 18a6 6 0 0 1 12 0"/><path d="M12 4v3"/><path d="m4.9 9.9 1.4 1.4"/><path d="m19.1 9.9-1.4 1.4"/></svg>Your shitos, your minhag</h3>
-          <p>Choose the opinions you follow (MGA or GRA, dawn and nightfall, candle lighting minutes, when Shabbos ends). Tap any zman to see how it is calculated. <em>Compare with my luach</em> finds which opinion your printed calendar uses.</p>
-        </div>
-        <div class="feature">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/></svg>Hebrew calendar</h3>
-          <ul>
-            <li>Hebrew date, parsha, holidays, fasts and Rosh Chodesh</li>
-            <li>Erev Pesach chametz times</li>
-            <li>Daf Yomi and other daily learning</li>
-            <li>Yahrzeits and Hebrew birthdays, each year on the right date</li>
-          </ul>
-        </div>
-        <div class="feature">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>Reminders</h3>
-          <ul>
-            <li>Sefiras HaOmer, in Hebrew and English</li>
-            <li>Chanukah candles, Kiddush Levana, Eruv Tavshilin</li>
-            <li>Tal U’matar and Birkas Ha’ilanos</li>
-            <li>Optional Do Not Disturb for Shabbos</li>
-          </ul>
-        </div>
-        <div class="feature">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>Built to ring</h3>
-          <p>Alarms use Android’s exact alarm clock, so they ring even when the app is closed. An <em>Alarm check</em> finds settings that could stop an alarm and fixes them. When you travel, times follow your location. No account, no ads, and your data stays on your phone.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="install" style="padding-top:0">
-    <div class="wrap">
-      <div class="download">
-        <div style="display:grid;gap:1rem;min-width:0">
-          <span class="eyebrow">Download</span>
-          <h2>Try the beta</h2>
-          <p class="lede" style="font-size:1.05rem">The Halachic Alarm Clock is not on the Play Store yet. You can install it directly from this page. It takes about two minutes.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="downloads/halachic-alarm-clock-1.1.1.apk" download>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
-              Download APK (11 MB)
-            </a>
-          </div>
-        </div>
-        <div style="display:grid;gap:1.25rem;min-width:0">
-          <dl class="download-meta">
-            <dt>Version</dt><dd>1.1.1 (beta)</dd>
-            <dt>Released</dt><dd>October 11, 2026</dd>
-            <dt>Requires</dt><dd>Android 5.0 or newer</dd>
-            <dt>File</dt><dd>halachic-alarm-clock-1.1.1.apk</dd>
-            <dt>Size</dt><dd>10.8 MB</dd>
-          </dl>
-          <p class="note">This is a beta. Please check important alarms against your own luach while you try it, and tell us about anything that looks wrong.</p>
-        </div>
-      </div>
-
-      <div class="section-head" style="margin-top:3.5rem;margin-bottom:0">
-        <span class="eyebrow">How to install</span>
-        <h2>Install on your Android phone</h2>
-        <p class="lede">Do these steps on the phone itself. Button names vary a little between phone makers and Android versions.</p>
-      </div>
-
-      <ol class="steps">
-        <li class="step"><div>
-          <h3>Download the file</h3>
-          <p>Open this page in Chrome (or your usual browser) on your phone and tap <strong>Download APK</strong>. If the browser warns that “this type of file can harm your device,” tap <span class="ui">Download anyway</span>.</p>
-        </div></li>
-        <li class="step"><div>
-          <h3>Open it</h3>
-          <p>When the download finishes, tap <span class="ui">Open</span> in the notification or at the bottom of the browser. You can also find it later in the <strong>Files</strong> app under <strong>Downloads</strong>.</p>
-        </div></li>
-        <li class="step"><div>
-          <h3>Allow installs from your browser</h3>
-          <p>Android asks for permission the first time you install an app from outside the Play Store. Tap <span class="ui">Settings</span>, turn on <span class="ui">Allow from this source</span>, then press back.</p>
-          <p style="margin-top:.4rem">You only need to do this once. You can turn it off again after installing.</p>
-        </div></li>
-        <li class="step"><div>
-          <h3>Install</h3>
-          <p>Tap <span class="ui">Install</span>. Google Play Protect may say it doesn’t recognize the developer. That is expected for apps not yet on the Play Store: tap <span class="ui">More details</span>, then <span class="ui">Install anyway</span>.</p>
-        </div></li>
-        <li class="step"><div>
-          <h3>Open the app and finish setup</h3>
-          <p>A short setup asks for your location and minhag. Then allow what the alarms need to ring on time:</p>
-          <ul>
-            <li><strong>Notifications</strong>, so the alarm can show on screen.</li>
-            <li><strong>Alarms &amp; reminders</strong>, so it rings at the exact minute.</li>
-            <li><strong>Location</strong> (optional), for accurate zmanim. You can pick a city instead.</li>
-          </ul>
-          <p style="margin-top:.4rem">Then open <span class="ui">Settings › Alarm check</span>. It finds anything that could stop an alarm, such as battery saving, and fixes it with one tap.</p>
-        </div></li>
-      </ol>
-
-      <div class="help">
-        <div>
-          <h3>Updating to a new version</h3>
-          <p>Download the new APK from this page and install it the same way. Your alarms and settings are kept.</p>
-        </div>
-        <div>
-          <h3>“App not installed”</h3>
-          <p>This usually means an older copy from a different source is already on the phone. Uninstall it first, then install again.</p>
-        </div>
-        <div>
-          <h3>An alarm didn’t ring</h3>
-          <p>Run <span class="ui">Settings › Alarm check</span> first. Then open <span class="ui">Settings › Alarm history</span> and tap <span class="ui">Send report</span>, so we can see what happened.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule">
-
-  <section id="shabbos-list">
-    <div class="wrap soon">
-      <div style="display:grid;gap:1rem;min-width:0">
+      <article class="app-card">
         <div class="app-id">
           <img class="app-icon" src="img/logos/shabbos-list.svg" alt="" width="56" height="56">
           <div>
-            <h2>Shabbos List</h2>
-            <div class="chips" style="margin-top:.5rem"><span class="chip">In development</span><span class="chip">Android</span></div>
+            <h2><a href="shabbos-list/">Shabbos List</a></h2>
+            <div class="chips"><span class="chip">In development</span><span class="chip">Android</span></div>
           </div>
         </div>
-        <p class="lede">A shared to-do list for getting the house ready for Shabbos. Make the list once. Each week it starts fresh, and everyone in the family can see what is left and who is doing it.</p>
-        <p style="color:var(--muted)">Want to try it early? Email us and we’ll let you know when a test version is ready.</p>
+        <p class="lede">A shared to-do list for getting the house ready for Shabbos. Make it once, and it starts fresh every week.</p>
+        <ul>
+          <li>Clears itself on Motzei Shabbos</li>
+          <li>Assign jobs to each family member</li>
+          <li>Tasks only for the weeks that need them</li>
+        </ul>
+        <div class="actions">
+          <a class="btn btn-ghost" href="shabbos-list/">Learn more</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">How we build</span>
+        <h2>Made to be trusted</h2>
       </div>
-      <ul class="checklist" aria-label="Planned features">
-        <li><span class="box" aria-hidden="true"></span><div><strong>Resets after Shabbos</strong><span class="d">The list clears itself on Motzei Shabbos, ready for next week.</span></div></li>
-        <li><span class="box" aria-hidden="true"></span><div><strong>Assign tasks</strong><span class="d">Give each job to a family member so nothing is done twice or forgotten.</span></div></li>
-        <li><span class="box" aria-hidden="true"></span><div><strong>Group tasks</strong><span class="d">Kitchen, table, lights, timers: keep related jobs together.</span></div></li>
-        <li><span class="box" aria-hidden="true"></span><div><strong>Only when needed</strong><span class="d">Tasks that show up only for some weeks, like guests or a Yom Tov that follows Shabbos.</span></div></li>
-        <li><span class="box" aria-hidden="true"></span><div><strong>Reusable templates</strong><span class="d">Start from a ready-made list and change it to fit your home.</span></div></li>
-      </ul>
+      <div class="features">
+        <div class="feature">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18h18"/><path d="M6 18a6 6 0 0 1 12 0"/><path d="M12 4v3"/><path d="m4.9 9.9 1.4 1.4"/><path d="m19.1 9.9-1.4 1.4"/></svg>Your shitos, your minhag</h3>
+          <p>You choose the opinions you follow. The apps show how each time is worked out, so you can check it.</p>
+        </div>
+        <div class="feature">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>Private by default</h3>
+          <p>No account and no ads. Your data stays on your phone.</p>
+        </div>
+        <div class="feature">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>We listen</h3>
+          <p>If a time doesn’t match your luach, tell us. Every message is read.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -388,14 +120,14 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
 
   <section id="contact">
     <div class="wrap contact">
-      <div style="display:grid;gap:.6rem;min-width:0">
+      <div>
         <span class="eyebrow">Contact</span>
         <h2>Questions, feedback or a wrong time?</h2>
         <p class="lede">We read every message. If a zman doesn’t match your luach, tell us the date, place and time you expected.</p>
       </div>
       <div class="email-row">
         <a class="email" href="mailto:admin@halachicapplications.com" id="email">admin@halachicapplications.com</a>
-        <button class="copy" type="button" id="copy-email">Copy</button>
+        <button class="copy" type="button" data-copy="email">Copy</button>
       </div>
     </div>
   </section>
@@ -408,145 +140,6 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
   </div>
 </footer>
 
-<script>
-(function () {
-  // Day arc: today's zmanim for New York (the app's preset: 40.7306, -73.9352),
-  // GRA hours from sunrise to sunset and dawn 72 minutes before sunrise, as in the app.
-  var LAT = 40.730610, LNG = -73.935242, ZONE = "America/New_York", MIN = 60000;
-  // NOAA solar position, re-evaluated at the event itself (as KosherJava does), for sunrise and
-  // sunset (sun 0.833° below the horizon) on a civil date.
-  var rad = Math.PI / 180;
-  function solar(ms) {
-    var T = (ms / 864e5 + 2440587.5 - 2451545) / 36525;
-    var L0 = (280.46646 + T * (36000.76983 + T * 0.0003032)) % 360;
-    var M = 357.52911 + T * (35999.05029 - 0.0001537 * T);
-    var ecc = 0.016708634 - T * (0.000042037 + 0.0000001267 * T);
-    var C = Math.sin(M * rad) * (1.914602 - T * (0.004817 + 0.000014 * T)) +
-      Math.sin(2 * M * rad) * (0.019993 - 0.000101 * T) + Math.sin(3 * M * rad) * 0.000289;
-    var omega = 125.04 - 1934.136 * T;
-    var lambda = L0 + C - 0.00569 - 0.00478 * Math.sin(omega * rad);
-    var eps = 23 + (26 + (21.448 - T * (46.815 + T * (0.00059 - T * 0.001813))) / 60) / 60 + 0.00256 * Math.cos(omega * rad);
-    var yy = Math.pow(Math.tan(eps * rad / 2), 2);
-    return {
-      dec: Math.asin(Math.sin(eps * rad) * Math.sin(lambda * rad)),
-      eot: 4 / rad * (yy * Math.sin(2 * L0 * rad) - 2 * ecc * Math.sin(M * rad) +
-        4 * ecc * yy * Math.sin(M * rad) * Math.cos(2 * L0 * rad) - 0.5 * yy * yy * Math.sin(4 * L0 * rad) -
-        1.25 * ecc * ecc * Math.sin(2 * M * rad))
-    };
-  }
-  function sunEvent(y, m, d, sign) {
-    var midnight = Date.UTC(y, m - 1, d), t = Date.UTC(y, m - 1, d, 12);
-    for (var i = 0; i < 3; i++) {
-      var s = solar(t);
-      var ha = Math.acos(Math.cos(90.833 * rad) / (Math.cos(LAT * rad) * Math.cos(s.dec)) - Math.tan(LAT * rad) * Math.tan(s.dec)) / rad;
-      t = midnight + (720 - 4 * LNG - s.eot + sign * 4 * ha) * MIN;
-    }
-    return t;
-  }
-  function sunriseSunset(y, m, d) { return { rise: sunEvent(y, m, d, -1), set: sunEvent(y, m, d, 1) }; }
-  // Seconds are dropped, as the app's clock format does.
-  function round(ms) { return Math.floor(ms / MIN) * MIN; }
-  var clock = new Intl.DateTimeFormat("en-US", { timeZone: ZONE, hour: "numeric", minute: "2-digit" });
-  function hm(ms) { return clock.format(new Date(round(ms))).replace(/\s?[AP]M$/, ""); }
-
-  // Today's date in New York, at midday there.
-  var parts = {};
-  new Intl.DateTimeFormat("en-US", { timeZone: ZONE, year: "numeric", month: "numeric", day: "numeric" })
-    .formatToParts(new Date()).forEach(function (p) { parts[p.type] = p.value; });
-  var today = Date.UTC(+parts.year, +parts.month - 1, +parts.day, 17);
-  var sun = sunriseSunset(+parts.year, +parts.month, +parts.day), rise = sun.rise, set = sun.set, hour = (set - rise) / 12;
-  var z = [
-    { n: "Dawn", t: rise - 72 * MIN },
-    { n: "Sunrise", t: rise },
-    { n: "Shema", t: rise + 3 * hour },
-    { n: "Midday", t: rise + 6 * hour },
-    { n: "Mincha", t: rise + 9.5 * hour },
-    { n: "Plag", t: rise + 10.75 * hour },
-    { n: "Sunset", t: set }
-  ];
-  var alarmT = set - 18 * MIN;
-
-  // Header: civil date, Hebrew date, Rosh Chodesh.
-  var NAMES = { Tishri: "Tishrei", Heshvan: "Cheshvan", Tamuz: "Tammuz" };
-  function hebrew(ms) {
-    var hp = {};
-    new Intl.DateTimeFormat("en-u-ca-hebrew", { timeZone: ZONE, year: "numeric", month: "long", day: "numeric" })
-      .formatToParts(new Date(ms)).forEach(function (p) { hp[p.type] = p.value; });
-    return { day: +hp.day, month: NAMES[hp.month] || hp.month, year: hp.year };
-  }
-  var HEB = { Tishrei: "תשרי", Cheshvan: "חשוון", Kislev: "כסלו", Tevet: "טבת", Shevat: "שבט", Adar: "אדר",
-    "Adar I": "אדר א׳", "Adar II": "אדר ב׳", Nisan: "ניסן", Iyar: "אייר", Sivan: "סיוון", Tammuz: "תמוז", Av: "אב", Elul: "אלול" };
-  function gematria(n) {
-    var out = "", vals = [[400, "ת"], [300, "ש"], [200, "ר"], [100, "ק"], [90, "צ"], [80, "פ"], [70, "ע"], [60, "ס"],
-      [50, "נ"], [40, "מ"], [30, "ל"], [20, "כ"], [10, "י"], [9, "ט"], [8, "ח"], [7, "ז"], [6, "ו"], [5, "ה"], [4, "ד"], [3, "ג"], [2, "ב"], [1, "א"]];
-    while (n > 0) {
-      if (n === 15) { out += "טו"; break; }
-      if (n === 16) { out += "טז"; break; }
-      for (var i = 0; i < vals.length; i++) if (vals[i][0] <= n) { out += vals[i][1]; n -= vals[i][0]; break; }
-    }
-    return out.length === 1 ? out + "׳" : out.slice(0, -1) + "״" + out.slice(-1);
-  }
-  try {
-    document.getElementById("arc-date").textContent = new Intl.DateTimeFormat("en-US",
-      { timeZone: ZONE, weekday: "long", year: "numeric", month: "long", day: "numeric" }).format(new Date(today));
-    var hd = hebrew(today), line = hd.day + " " + hd.month + " " + hd.year;
-    if (hd.day === 30) line += " · Rosh Chodesh " + hebrew(today + 864e5).month;
-    else if (hd.day === 1 && hd.month !== "Tishrei") line += " · Rosh Chodesh " + hd.month;
-    else if (hd.day === 1 || hd.day === 2) line += hd.month === "Tishrei" ? " · Rosh Hashanah" : "";
-    document.getElementById("arc-heb-en").textContent = line;
-    document.getElementById("arc-heb").textContent = gematria(hd.day) + " " + (HEB[hd.month] || "") + " " + gematria(+hd.year % 1000);
-  } catch (err) { /* keep the date written in the page */ }
-  document.getElementById("arc-alarm").textContent = hm(alarmT);
-
-  var T0 = z[0].t - 20 * MIN, T1 = set + 25 * MIN, X0 = 40, X1 = 760, BASE = 175, H = 130;
-  function x(t) { return X0 + (t - T0) / (T1 - T0) * (X1 - X0); }
-  function y(t) {
-    if (t <= rise || t >= set) return BASE;
-    return BASE - H * Math.sin(Math.PI * (t - rise) / (set - rise));
-  }
-  var ns = "http://www.w3.org/2000/svg", svg = document.getElementById("arc");
-  function el(name, attrs, text) {
-    var e = document.createElementNS(ns, name);
-    for (var k in attrs) e.setAttribute(k, attrs[k]);
-    if (text) e.textContent = text;
-    svg.appendChild(e);
-    return e;
-  }
-  svg.setAttribute("aria-label", "Today's zmanim in New York, from dawn at " + hm(z[0].t) + " to sunset at " +
-    hm(set) + ", with an alarm 18 minutes before sunset at " + hm(alarmT) + ".");
-  el("line", { x1: X0 - 20, x2: X1 + 20, y1: BASE, y2: BASE, stroke: "var(--muted)", "stroke-width": 1, "stroke-dasharray": "3 5" });
-  var d = "", step = (set - rise) / 140;
-  for (var t = rise; t <= set; t += step) d += (d ? " L" : "M") + x(t).toFixed(1) + " " + y(t).toFixed(1);
-  d += " L" + x(set).toFixed(1) + " " + BASE;
-  el("path", { d: d + " Z", fill: "var(--sun-soft)", opacity: 0.6 });
-  el("path", { d: d, fill: "none", stroke: "var(--sun)", "stroke-width": 2.5, "stroke-linecap": "round" });
-  z.forEach(function (p) {
-    var px = x(p.t), py = y(p.t);
-    el("line", { x1: px, x2: px, y1: py, y2: BASE + 8, stroke: "var(--muted)", "stroke-width": 1, opacity: 0.45 });
-    el("circle", { cx: px, cy: py, r: 4.5, fill: "var(--bg)", stroke: "var(--sun)", "stroke-width": 2 });
-    el("text", { x: px, y: BASE + 28, "text-anchor": "middle", class: "t-name" }, p.n);
-    el("text", { x: px, y: BASE + 46, "text-anchor": "middle" }, hm(p.t));
-  });
-  // The sun, at midday.
-  el("circle", { cx: x(z[3].t), cy: y(z[3].t) - 0.5, r: 11, fill: "var(--sun)" });
-  // The alarm, 18 minutes before sunset.
-  var ax = x(alarmT), ay = y(alarmT);
-  el("line", { x1: ax, x2: ax, y1: ay - 6, y2: 40, stroke: "var(--accent)", "stroke-width": 1.5 });
-  el("circle", { cx: ax, cy: ay, r: 5, fill: "var(--accent)" });
-  el("text", { x: ax - 8, y: 30, "text-anchor": "end", class: "t-alarm" }, "Alarm · 18 min before sunset · " + hm(alarmT));
-
-  var btn = document.getElementById("copy-email"), email = document.getElementById("email");
-  btn.addEventListener("click", function () {
-    var text = email.textContent;
-    function done() { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy"; }, 1800); }
-    function fallback() {
-      var r = document.createRange(); r.selectNodeContents(email);
-      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-      btn.textContent = "Selected";
-    }
-    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
-  });
-})();
-</script>
+<script src="js/site.js"></script>
 </body>
 </html>
