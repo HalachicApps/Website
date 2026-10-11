@@ -6,6 +6,7 @@
 <title>Halachic Applications</title>
 <meta name="description" content="Halachic Applications makes Android apps for the Jewish day: the Halachic Alarm Clock, with alarms set by zmanim, and the Shabbos List.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Frank+Ruhl+Libre:wght@500&display=swap">
@@ -65,7 +66,7 @@ p { margin: 0; }
 .site-header { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; }
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 0.85rem; flex-wrap: wrap; }
 .brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--ink); font: 700 1.1rem/1 var(--font-display); }
-.brand-mark { width: 30px; height: 30px; flex: none; }
+.brand-mark { width: 30px; height: 30px; flex: none; border-radius: 7px; }
 .nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
 .nav a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
 .nav a:hover { color: var(--ink); }
@@ -88,7 +89,7 @@ p { margin: 0; }
 .dayarc { margin-top: 1.5rem; background: var(--sky); border-radius: var(--radius); padding: 1.25rem 1.25rem 0.75rem; }
 .dayarc-head { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: 0.92rem; color: var(--muted); }
 .dayarc-head strong { color: var(--ink); font-weight: 600; }
-.dayarc-head .heb { font-family: var(--font-hebrew); font-size: 1.05rem; color: var(--ink); }
+.dayarc-head .heb { font-family: var(--font-hebrew); font-size: 1.05rem; color: var(--ink); unicode-bidi: isolate; }
 .arc-scroll { overflow-x: auto; }
 .arc-svg { width: 100%; min-width: 620px; height: auto; display: block; }
 .arc-svg text { font-family: var(--font-mono); font-size: 12px; fill: var(--muted); }
@@ -103,8 +104,7 @@ section { padding-block: clamp(3rem, 7vw, 5rem); }
 
 /* App header */
 .app-id { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-.app-icon { width: 56px; height: 56px; border-radius: 14px; background: var(--accent); display: grid; place-items: center; flex: none; }
-.app-icon svg { width: 30px; height: 30px; }
+.app-icon { width: 56px; height: 56px; border-radius: 13px; flex: none; box-shadow: 0 0 0 1px var(--line); }
 .chips { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .chip { font: 500 0.78rem/1 var(--font-mono); padding: 0.45rem 0.65rem; border-radius: 999px; background: var(--surface); color: var(--muted); }
 .chip.live { background: var(--primary-soft); color: var(--primary); }
@@ -159,7 +159,6 @@ section { padding-block: clamp(3rem, 7vw, 5rem); }
 /* Shabbos List */
 .soon { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.5rem; align-items: start; }
 @media (max-width: 760px) { .soon { grid-template-columns: 1fr; } }
-.soon .app-icon { background: var(--ink); }
 .checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
 .checklist li { display: grid; grid-template-columns: 1.4rem minmax(0, 1fr); gap: 0.75rem; align-items: start; }
 .checklist .box { width: 1.2rem; height: 1.2rem; border: 2px solid var(--muted); border-radius: 4px; margin-top: 0.22rem; }
@@ -181,12 +180,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Halachic Applications home">
-      <svg class="brand-mark" viewBox="0 0 30 30" aria-hidden="true">
-        <rect width="30" height="30" rx="8" fill="var(--accent)"/>
-        <path d="M5 21 A10 10 0 0 1 25 21" fill="none" stroke="var(--accent-ink)" stroke-width="2.2" stroke-linecap="round"/>
-        <circle cx="15" cy="11" r="2.6" fill="var(--accent-ink)"/>
-        <line x1="4" y1="21" x2="26" y2="21" stroke="var(--accent-ink)" stroke-width="2.2" stroke-linecap="round"/>
-      </svg>
+      <img class="brand-mark" src="img/logos/halachic-applications.svg" alt="" width="30" height="30">
       Halachic Applications
     </a>
     <nav class="nav" aria-label="Main">
@@ -214,7 +208,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
     <figure class="dayarc" aria-labelledby="arc-cap">
       <div class="dayarc-head">
         <span><strong id="arc-date">Sunday, October 11, 2026</strong> · New York</span>
-        <span><span class="heb" lang="he" id="arc-heb">ל׳ תשרי תשפ״ז</span> · <span id="arc-heb-en">30 Tishrei 5787 · Rosh Chodesh Cheshvan</span></span>
+        <span><span class="heb" lang="he" dir="rtl" id="arc-heb">ל׳ תשרי תשפ״ז</span> · <span id="arc-heb-en">30 Tishrei 5787 · Rosh Chodesh Cheshvan</span></span>
       </div>
       <div class="arc-scroll">
         <svg class="arc-svg" id="arc" viewBox="0 0 800 250" role="img" aria-label="The day's zmanim in New York on October 11, 2026, from dawn at 5:50 AM to sunset at 6:21 PM, with an alarm 18 minutes before sunset at 6:03 PM."></svg>
@@ -227,9 +221,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
     <div class="wrap">
       <div class="section-head">
         <div class="app-id">
-          <div class="app-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/></svg>
-          </div>
+          <img class="app-icon" src="img/logos/alarm-clock.svg" alt="" width="56" height="56">
           <div>
             <h2>Halachic Alarm Clock</h2>
             <div class="chips" style="margin-top:.5rem">
@@ -373,9 +365,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
     <div class="wrap soon">
       <div style="display:grid;gap:1rem;min-width:0">
         <div class="app-id">
-          <div class="app-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--bg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 7 2 2 4-4"/><path d="M13 7h7"/><path d="m4 15 2 2 4-4"/><path d="M13 15h7"/></svg>
-          </div>
+          <img class="app-icon" src="img/logos/shabbos-list.svg" alt="" width="56" height="56">
           <div>
             <h2>Shabbos List</h2>
             <div class="chips" style="margin-top:.5rem"><span class="chip">In development</span><span class="chip">Android</span></div>
@@ -423,11 +413,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
   // Day arc: today's zmanim for New York (the app's preset: 40.7306, -73.9352),
   // GRA hours from sunrise to sunset and dawn 72 minutes before sunrise, as in the app.
   var LAT = 40.730610, LNG = -73.935242, ZONE = "America/New_York", MIN = 60000;
-  // NOAA solar position: sunrise and sunset (sun 0.833° below the horizon) for a civil date.
+  // NOAA solar position, re-evaluated at the event itself (as KosherJava does), for sunrise and
+  // sunset (sun 0.833° below the horizon) on a civil date.
   var rad = Math.PI / 180;
-  function sunriseSunset(y, m, d) {
-    var noonUtc = Date.UTC(y, m - 1, d, 12);
-    var T = (noonUtc / 864e5 + 2440587.5 - 2451545) / 36525;
+  function solar(ms) {
+    var T = (ms / 864e5 + 2440587.5 - 2451545) / 36525;
     var L0 = (280.46646 + T * (36000.76983 + T * 0.0003032)) % 360;
     var M = 357.52911 + T * (35999.05029 - 0.0001537 * T);
     var ecc = 0.016708634 - T * (0.000042037 + 0.0000001267 * T);
@@ -436,15 +426,24 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
     var omega = 125.04 - 1934.136 * T;
     var lambda = L0 + C - 0.00569 - 0.00478 * Math.sin(omega * rad);
     var eps = 23 + (26 + (21.448 - T * (46.815 + T * (0.00059 - T * 0.001813))) / 60) / 60 + 0.00256 * Math.cos(omega * rad);
-    var dec = Math.asin(Math.sin(eps * rad) * Math.sin(lambda * rad));
     var yy = Math.pow(Math.tan(eps * rad / 2), 2);
-    var eot = 4 / rad * (yy * Math.sin(2 * L0 * rad) - 2 * ecc * Math.sin(M * rad) +
-      4 * ecc * yy * Math.sin(M * rad) * Math.cos(2 * L0 * rad) - 0.5 * yy * yy * Math.sin(4 * L0 * rad) -
-      1.25 * ecc * ecc * Math.sin(2 * M * rad));
-    var ha = Math.acos(Math.cos(90.833 * rad) / (Math.cos(LAT * rad) * Math.cos(dec)) - Math.tan(LAT * rad) * Math.tan(dec)) / rad;
-    var noon = 720 - 4 * LNG - eot, midnight = Date.UTC(y, m - 1, d);
-    return { rise: midnight + (noon - 4 * ha) * MIN, set: midnight + (noon + 4 * ha) * MIN };
+    return {
+      dec: Math.asin(Math.sin(eps * rad) * Math.sin(lambda * rad)),
+      eot: 4 / rad * (yy * Math.sin(2 * L0 * rad) - 2 * ecc * Math.sin(M * rad) +
+        4 * ecc * yy * Math.sin(M * rad) * Math.cos(2 * L0 * rad) - 0.5 * yy * yy * Math.sin(4 * L0 * rad) -
+        1.25 * ecc * ecc * Math.sin(2 * M * rad))
+    };
   }
+  function sunEvent(y, m, d, sign) {
+    var midnight = Date.UTC(y, m - 1, d), t = Date.UTC(y, m - 1, d, 12);
+    for (var i = 0; i < 3; i++) {
+      var s = solar(t);
+      var ha = Math.acos(Math.cos(90.833 * rad) / (Math.cos(LAT * rad) * Math.cos(s.dec)) - Math.tan(LAT * rad) * Math.tan(s.dec)) / rad;
+      t = midnight + (720 - 4 * LNG - s.eot + sign * 4 * ha) * MIN;
+    }
+    return t;
+  }
+  function sunriseSunset(y, m, d) { return { rise: sunEvent(y, m, d, -1), set: sunEvent(y, m, d, 1) }; }
   // Seconds are dropped, as the app's clock format does.
   function round(ms) { return Math.floor(ms / MIN) * MIN; }
   var clock = new Intl.DateTimeFormat("en-US", { timeZone: ZONE, hour: "numeric", minute: "2-digit" });
