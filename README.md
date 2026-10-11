@@ -17,7 +17,7 @@ The Halachic Applications website, served by GitHub Pages from this repository.
 
 ## Release a new Shemesh version
 
-1. Copy the new APK into `downloads/` as `halachic-alarm-clock-<version>.apk` and delete the old one.
+1. Copy the new APK into `downloads/` as `shemesh-<version>.apk` and delete the old one.
 2. Search all the pages for the old version number and update it: the download link and box in `shemesh/download/index.html`, and the version chips in `index.html`, `shemesh/index.html` and the download page.
 3. Commit and push. The live site updates in about a minute.
 
