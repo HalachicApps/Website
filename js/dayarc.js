@@ -90,7 +90,7 @@
   var ns = "http://www.w3.org/2000/svg", svg = document.getElementById("arc");
   svg.setAttribute("aria-label", "Today's zmanim in New York, from dawn at " + hm(z[0].t) + " to sunset at " +
     hm(set) + ", with an alarm 18 minutes before sunset at " + hm(alarmT) + ".");
-  // Wide screens get the labelled arc; phones get a smaller arc without labels and the list below it.
+  // Wide screens get the labeled arc; phones get a smaller arc without labels and the list below it.
   function draw(narrow) {
     while (svg.firstChild) svg.removeChild(svg.firstChild);
     var W = narrow ? 400 : 800, T0 = z[0].t - 20 * MIN, T1 = set + 25 * MIN;
