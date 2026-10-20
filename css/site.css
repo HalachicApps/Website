@@ -259,3 +259,5 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
   footer .wrap { flex-direction: column; gap: 0.4rem; }
 }
 @media (max-width: 400px) { .ui { white-space: normal; } }
+footer a { color: var(--muted); }
+footer a:hover { color: var(--ink); }

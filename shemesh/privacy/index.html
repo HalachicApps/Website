@@ -34,46 +34,105 @@
 </header>
 
 <main id="top">
-  <div class="wrap" style="padding-top:2.5rem;padding-bottom:3rem;max-width:46rem">
-    <h1>Shemesh privacy policy</h1>
-    <p class="lede">Last updated October 19, 2026. Shemesh – Zmanim Alarm Clock is made by Halachic Applications LLC.</p>
+  <style>
+    .policy { max-width: 44rem; display: grid; gap: 2.25rem; }
+    .policy section { padding: 0; display: grid; gap: 0.75rem; }
+    .policy h2 { font-size: clamp(1.3rem, 2.4vw, 1.6rem); }
+    .policy p, .policy li { color: var(--muted); }
+    .policy li strong { color: var(--ink); font-weight: 600; }
+    .policy ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.5rem; }
+    .policy a { color: var(--primary); }
+    .uses { width: 100%; border-collapse: collapse; font-size: 0.98rem; }
+    .uses th, .uses td { text-align: left; vertical-align: top; padding: 0.75rem 1rem 0.75rem 0; border-top: 1px solid var(--line); }
+    .uses th { font-weight: 600; color: var(--ink); width: 34%; }
+    .uses td { color: var(--muted); }
+    .uses tr:last-child th, .uses tr:last-child td { border-bottom: 1px solid var(--line); }
+    @media (max-width: 40rem) { .uses th, .uses td { display: block; width: auto; padding: 0.15rem 0; border: 0; } .uses tr { display: block; padding: 0.75rem 0; border-top: 1px solid var(--line); } .uses tr:last-child { border-bottom: 1px solid var(--line); } }
+  </style>
 
-    <h2>The short version</h2>
-    <p>Shemesh keeps your information on your phone. It has no accounts, no ads and no analytics, and it does not send your location, alarms or settings to us or to anyone else. The app does not connect to the internet by itself.</p>
-
-    <h2>What the app uses, and why</h2>
-    <ul>
-      <li><strong>Location</strong> (when you allow it): to work out sunrise, sunset and the other zmanim where you are. If you turn on "Follow me in the background", Shemesh also collects your location in the background, even when the app is closed or not in use, to move your alarms when you travel. It only uses positions the phone already has, plus one about every half hour. Locations stay on your phone and are never sent or shared. You can turn this off at any time in Settings, or take back the permission in your phone's settings.</li>
-      <li><strong>Your alarms, settings, saved places, yahrzeits and birthdays</strong>: stored only on your phone, so the app can work.</li>
-      <li><strong>Notifications, exact alarms, full-screen alerts and Do Not Disturb</strong>: so alarms ring on time and, if you choose, stay quiet on Shabbos and Yom Tov.</li>
-    </ul>
-
-    <h2>Backups and exports</h2>
-    <ul>
-      <li>Android may back up the app's data to your own Google account (Android Backup). That is between you and Google, and you can switch it off in your phone's settings.</li>
-      <li>"Export" in Settings saves a file that you choose where to keep. It contains your settings, which include your location, so take care when sharing it.</li>
-    </ul>
-
-    <h2>Shemesh Pro and payments</h2>
-    <p>Pro is bought through Google Play. Google handles the payment and tells the app only whether Pro was bought. We do not see your name, card or any payment details. Pro can also be unlocked with a Pro code, which is checked on your phone.</p>
-
-    <h2>Feedback and diagnostics</h2>
-    <p>If you choose to send feedback or a diagnostics report, the app opens your email app with a message for you to read and send. Nothing is sent unless you press send.</p>
-
-    <h2>Children</h2>
-    <p>Shemesh is not directed at children under 13 and collects no personal information from anyone.</p>
-
-    <h2>Changes</h2>
-    <p>If this policy changes, the new version will be on this page with a new date.</p>
-
-    <h2 id="contact">Contact</h2>
-    <p>Questions: <a href="mailto:halachicapplications@gmail.com">halachicapplications@gmail.com</a></p>
+  <div class="wrap hero" style="padding-bottom:0">
+    <a class="crumb" href="../">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      Shemesh – Zmanim Alarm Clock
+    </a>
+    <h1>Privacy policy</h1>
+    <p class="lede">Shemesh keeps your information on your phone. Last updated October 19, 2026.</p>
   </div>
+
+  <section style="padding-top:2rem;padding-bottom:1rem">
+    <div class="wrap">
+      <div class="features">
+        <div class="feature">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>Stays on your phone</h3>
+          <p>Your location, alarms and settings are never sent to us or to anyone else. The app doesn’t connect to the internet by itself.</p>
+        </div>
+        <div class="feature">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>Nothing to track you</h3>
+          <p>No accounts, no ads and no analytics.</p>
+        </div>
+        <div class="feature">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Payments by Google</h3>
+          <p>Pro is bought through Google Play. We never see your name or payment details.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:2rem">
+    <div class="wrap"><div class="policy">
+
+      <section>
+        <h2>Who we are</h2>
+        <p>Shemesh – Zmanim Alarm Clock is made by Halachic Applications LLC. Questions about this policy: <a href="mailto:halachicapplications@gmail.com">halachicapplications@gmail.com</a>.</p>
+      </section>
+
+      <section>
+        <h2>What the app uses, and why</h2>
+        <table class="uses">
+          <tr><th>Location, when you allow it</th><td>To work out sunrise, sunset and the other zmanim where you are.</td></tr>
+          <tr><th>Location in the background, only if you turn on “Follow me in the background”</th><td>Shemesh then collects your location in the background, even when the app is closed or not in use, to move your alarms when you travel. It uses only positions the phone already has, plus one about every half hour. It is off by default, and you can turn it off at any time in Settings or in your phone’s permissions.</td></tr>
+          <tr><th>Alarms, settings, saved places, yahrzeits and birthdays</th><td>Stored only on your phone, so the app can work.</td></tr>
+          <tr><th>Notifications, exact alarms, full-screen alerts, Do Not Disturb</th><td>So alarms ring on time and, if you choose, stay quiet on Shabbos and Yom Tov.</td></tr>
+        </table>
+        <p>Your location is never sent anywhere or shared.</p>
+      </section>
+
+      <section>
+        <h2>Backups and exports</h2>
+        <ul>
+          <li><strong>Android Backup.</strong> Android may back up the app’s data to your own Google account. That is between you and Google, and you can switch it off in your phone’s settings.</li>
+          <li><strong>Export.</strong> “Export” in Settings saves a file that you choose where to keep. It contains your settings, which include your location, so take care when sharing it.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Shemesh Pro and payments</h2>
+        <p>Pro is bought through Google Play. Google handles the payment and tells the app only whether Pro was bought. We don’t see your name, card or any payment details. Pro can also be unlocked with a Pro code, which is checked on your phone.</p>
+      </section>
+
+      <section>
+        <h2>Feedback and diagnostics</h2>
+        <p>If you choose to send feedback or a diagnostics report, the app opens your email app with a message for you to read and send. Nothing is sent unless you press send.</p>
+      </section>
+
+      <section>
+        <h2>Children</h2>
+        <p>Shemesh is not directed at children under 13 and collects no personal information from anyone.</p>
+      </section>
+
+      <section>
+        <h2>Changes</h2>
+        <p>If this policy changes, the new version will be on this page with a new date.</p>
+      </section>
+
+    </div></div>
+  </section>
 </main>
 
 <footer>
   <div class="wrap">
     <span>© 2026 Halachic Applications</span>
+    <a href="./">Privacy policy</a>
     <span>Zmanim are calculated, not a psak. Ask your rav when in doubt.</span>
   </div>
 </footer>
