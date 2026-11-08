@@ -7,6 +7,8 @@ The Halachic Applications website, served by GitHub Pages from this repository.
 | Home (`/`) | `index.html` |
 | Shemesh, the zmanim alarm clock (`/shemesh/`) | `shemesh/index.html` |
 | Shemesh download and install steps (`/shemesh/download/`) | `shemesh/download/index.html` |
+| Shemesh privacy policy (`/shemesh/privacy/`) | `shemesh/privacy/index.html` |
+| Shemesh Terms of Service (`/shemesh/terms/`) | `shemesh/terms/index.html` |
 | Old Alarm Clock links (`/alarm-clock/`, `/alarm-clock/download/`) | redirect pages in `alarm-clock/` |
 | Shabbos List (`/shabbos-list/`) | `shabbos-list/index.html` |
 
